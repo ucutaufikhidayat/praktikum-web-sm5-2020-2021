@@ -1,0 +1,133 @@
+body {background-color: rgb(255, 255, 255);}
+
+  .container {
+    background-color: black;
+      width: 470px;
+  }
+
+ .dashboard {
+  width: 1000px;
+  height: 30px;
+  position: relative;
+  animation-name: example;
+  animation-duration: 4s;
+  animation-delay: -2s;
+}
+
+@keyframes example {
+  0%   { left:0px; top:0px;}
+  25%  {left:200px; top:0px;}
+  50%  {left:200px; top:200px;}
+  75%  {left:0px; top:200px;}
+  100% {left:0px; top:0px;}
+}
+
+.small {
+    width: 1000px;
+    height: 100px;
+    position: relative;
+    animation-name: example;
+    animation-duration: 4s;
+    animation-delay: -2s;
+  }
+  
+  @keyframes example {
+    0%   { left:0px; top:0px;}
+    25%  {left:200px; top:0px;}
+    50%  {left:200px; top:200px;}
+    75%  {left:0px; top:200px;}
+    100% {left:0px; top:0px;}
+  }
+
+  @keyframes slidein {
+    from {
+        margin-left: 100%;
+        width: 300%;
+    }
+
+    to {
+        margin-left: 0%;
+        width: 100%;
+    }
+}
+
+h1,
+h4,
+small,
+p {
+    animation-duration: 3s;
+    animation-name: slidein;
+}
+
+html {
+  position: relative;
+}
+
+body {
+  margin-bottom: 100px;
+  margin-top: 30px;
+  color: #0f5757;
+
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #443b3b;
+  width: auto;
+
+
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+li a:hover {
+  background-color: #ff3333;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  background-color: rgb(121, 6, 6);
+  padding-top: 5px;
+  text-align: center;
+  color: aliceblue;
+}
+
+
+header {
+  text-align: center;
+}
+
+
+p {
+  text-align: center;
+}
+
+.container {
+  border: 15px solid#333;
+  padding: 50px;
+  margin: 20px;
+}
+
+.name {
+  border: 15px solid#333;
+  padding: 50px;
+  margin: 20px;
+  bottom: 50px;
+}
