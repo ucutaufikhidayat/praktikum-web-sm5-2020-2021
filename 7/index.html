@@ -1,0 +1,191 @@
+<html lang="en"><head>
+    <meta charset="utf-8">
+    
+    <title>Dashboard Covid 19 Indonesia</title>
+    <meta name="description" content="Dashboard Covid 19 Indonesia. Data kasus per provinsi dan informasi lainnya terkait penanganan Covid 19 atau Virus Corona">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="pertemuan3-dashboard-covid-19.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lemonada:wght@300&display=swap" rel="stylesheet">
+    
+  </head>
+  <body>
+    <!-- Header dashboard -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Dashboard Covid-19</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="#">Kasus</a>
+            <a class="nav-link" href="#">Bantuan Sosial</a>
+            <a class="nav-link" href="#">Donasi</a>
+            <a class="nav-link" href="#">Kontak</a>
+            <a class="nav-link" href="#">Download Apps</a>
+            
+          </div>
+        </div>
+      </nav>
+
+    
+    <!-- Konten utama dashboard -->
+    <div id="konten">
+      
+      <header>
+       <center> <h1 class="name">Dashboard Statistik Kasus COVID-19 Atau Virus Corona Di Indonesia</h1> </center>
+      <center><small class="small">Update Terakhir: Selasa, 3 Nov 2020</small></center>
+      </header>
+      <section id="konten-rangkuman-kasus">
+        <p></p>
+
+        <section id="konten-rangkuman-kasus">
+           <section class="flex-container" id="konten-rangkuman-kasus">
+
+            <div class="card mx-auto ml-2" style="width: 22%">
+              <div class="card-body">
+                <center><h4>Total terkonfirmasi / terinfeksi</h4>
+                  <p>415,402 <br>+2618 Kasus</p>
+                </center>
+          </div>
+          </div>
+          <p></p>
+          <div class="card mx-auto ml-2" style="width: 22%">
+            <div class="card-body">
+              <center><h4>Isolasi / dalam perawatan</h4>
+              <p>55,792</p>
+            </center>
+          </div>
+        </div>
+        <p></p>
+        <div class="card mx-auto ml-2" style="width: 22%">
+          <div class="card-body">
+            <center><h4>Selesai isolasi / dalam perawatan</h4>
+            <p>421,732</p>
+          </center>
+           </div>
+      </div>
+      <p></p>
+        <div class="card mx-auto ml-2" style="width: 22%">
+          <div class="card-body"></div>
+            <center><h4>Meninggal</h4>
+            <p>14,044</p>
+          </center>
+           </div>
+      </section></section></div>
+            
+
+      <div class="konten" id="konten">
+        <h1>Keterisian Ranjang di Rumah Sakit Ketika Covid-19</h1>
+         <form>
+           <table>
+             <tr>
+               <td>Jumlah total ranjang di rumah sakit</td>
+               <td><input id="input-j"></td>
+             </tr>
+             <tr>
+               <td>Jumlah total ranjang di rumah sakit yang terisi</td>
+               <td><input id="input-t"></td>
+             </tr>
+             <tr>
+               <td colspan="2" align="center"><input type="button" id="input-button" value="Kalkulasi Keterisian Ranjang di Rumah Sakit" onclick="prosesPerhitungan()"></td>
+             </tr>
+             <tr>
+               <td>Persentase keterisian</td>
+               <td><p id="output-ptj"></p></td>
+             </tr>
+             <tr>
+               <td>Kondisi</td>
+               <td><p id="output-k"></p></td>
+             </tr>
+           </table> 
+         </form>
+     </div>
+     <div class="konten" id="konten">
+     <h4 class="pb-2">Daftar Rumah Sakit Rujukan di Jawa Barat
+             </h4>
+             <div class="flex-container">
+               <table class="table table-striped">
+                 <thead>
+                   <tr>
+                     <th scope="col">#</th>
+                     <th scope="col">Nama RS</th>
+                     <th scope="col">Alamat</th>
+                     <th scope="col">No. Telepon</th>
+                   </tr>
+                 </thead>
+                 <tbody>
+                   <tr>
+                     <th scope="row">1</th>
+                     <td>RSU Dr. Hasan Sadikin</td>
+                     <td>Jl. Pasteur No. 38,<br> Kota Bandung</td>
+                     <td>@+62 22 2034 953</td>
+                   </tr>
+                   <tr>
+                     <th scope="row">2</th>
+                     <td>RSUD EBAH</td>
+                     <td>Jl. Cipaku No.87,<br> Kota Bandung</td>
+                     <td>@+62 22 5950 035</td>
+                   </tr>
+                   <tr>
+                     <th scope="row">3</th>
+                     <td>Klinik MARLINA</td>
+                     <td>Jl. Manirancan No.226, Majalaya,<br> Kota Bandung</td>
+                     <td>@+62 0812 4420 2226</td>
+                   </tr>
+                 </tbody>
+               </table> 
+             </div>
+     
+           </div>
+           <!-- /.col-lg-9 -->
+     
+     
+       <div class="card text-center">
+     
+         <div class="card-body">
+           <div class="row">
+             <div class="col-centered">
+               <div class="card" style="width: 18rem;">
+                 <div class="card-body">
+                   <h5 class="card-title">Call Center</h5>
+                   <h6 class="card-subtitle mb-2 text-muted">Nomor Darurat</h6>
+                   <p style="font-size: 30px" class="card-text"><i class="fa fa-phone "></i> 666</p>
+                 </div>
+               </div>
+             </div>
+             <div class="col-centered">
+               <div class="card" style="width: 18rem;">
+                 <div class="card-body">
+                   <h5 class="card-title">Hotline Pikobar</h5>
+                   <h6 class="card-subtitle mb-2 text-muted">Chat WA seputar COVID-19</h6>
+                   <p style="font-size: 25px" class="card-text"><i class="fa fa-whatsapp "></i>Klik untuk chat</p>
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>
+     
+       </div>
+         
+          
+        
+        <p></p>
+    <!-- Bagian footer dari dashboard -->
+    <footer id="footer">
+       <footer class="footer">
+         <p class="text-center"> Tim Pengelola Dashboard COVID-19 / Virus Corona Indonesia</p>
+            </footer>
+      
+    </footer> 
+ 
+ <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  
+</body></html>
