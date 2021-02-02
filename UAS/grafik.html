@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grafik Dashboard Covid 19 Indonesias</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"
+    integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw=="
+    crossorigin="anonymous"></script>
+    <link rel="stylesheet" 
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"
+    integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw=="
+    crossorigin="anonymous">
+    <style>
+        header{
+            padding: 40px;
+        }
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar navbar-expand-lg navbar-black bg-light fixed-top">
+            <div class="container">
+              <a class="navbar-brand" href="#">
+                <img height="50px" src="https://upload.wikimedia.org/wikipedia/commons/8/84/Coronavirus_Disease_Mitigation_Acceleration_Task_Force.jpg" alt="">
+              </a>
+              <p style="padding-top:20px"><stron>Dashboard Covid-19 Indonesia</stron></p>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                  <li class="nav-item active">
+                    <a class="nav-link" href="#">Home
+                      <span class="sr-only">(current)</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Kasus</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Bantuan Sosial</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Donasi</a>
+                </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                  </li>
+                  <li>
+                    <a href="#" class="button" id="button-download-app">Download App</a>
+                  </li>
+                </ul>
+              </div>
+            </div>	
+</header>
+    <tr></tr>
+    <td></td>
+
+    <div> 
+        <ul><h1>Dashboard Grafik Kasus Covid-19 Indonesia</h1>
+         <small>Update Terakhir: Selasa, 2 Feb 2021</small>
+
+    <canvas id="canvas-untuk-menggambar-grafik"></canvas>
+
+    <script>
+
+        function buatDataUntukGrafik(dataPenduduk, dataDokter){
+
+            console.log(dataPenduduk.nilai_per_wilayah);
+
+            // MC, function map() dari array
+            var label = dataPenduduk.nilai_per_wilayah.map(function(satuanData){
+                return satuanData.wilayah;
+            });
+
+            var jumlahDokter = dataDokter.nilai_per_wilayah.map(function(satuanData){
+                return satuanData.nilai_per_tahun[0].nilai;
+            });
+
+            var jumlahPenduduk = dataPenduduk.nilai_per_wilayah.map(function(satuanData){
+                return satuanData.nilai_per_tahun[0].nilai;
+            });
+
+            var jumlahPendudukPerDokter = jumlahPenduduk.map(function(satuanData, urutan){
+                return Math.round(jumlahPenduduk[urutan] / jumlahDokter[urutan]);
+            });
+
+            var garisidealWHOPendudukPerDokter = jumlahPenduduk.map(function(){
+                return 1000
+            });
+
+            var garisidealKemKesPendudukPerDokter = jumlahPenduduk.map(function(){
+                return 5000
+            });
+
+            var dataUntukGrafik = {
+                labels: label,
+                datasets: [{
+                    label: "Ideal Jumlah Penduduk per 1 Dokter - WHO",
+                    borderColor: "rgb(100, 0, 0)",
+                    borderWidth: 1,
+                    yAxisID: "sumbu-y-kanan",
+                    data: garisidealWHOPendudukPerDokter,
+                    type: 'line'
+                }, {
+                    label: "Ideal Jumlah Penduduk per 1 Dokter - KemKes",
+                    borderColor: "rgb(100, 0, 0)",
+                    borderWidth: 3,
+                    yAxisID: "sumbu-y-kanan",
+                    data: garisidealKemKesPendudukPerDokter,
+                    type: 'line'
+                }, {
+                    label: "Jumlah Penduduk",
+                    backgroundColor: "rgb(153, 102, 255)",
+                    yAxisID: "sumbu-y-kiri",
+                    data: jumlahPenduduk
+                }, {
+                    label: "Jumlah Penduduk Per 1 Dokter",
+                    backgroundColor: "rgb(232,0,13)",
+                    yAxisID: "sumbu-y-kanan",
+                    data: jumlahPendudukPerDokter
+                }] 
+            };
+            return dataUntukGrafik;
+        }
+
+        function buatGrafik(dataPenduduk, dataDokter) {
+            console.log("eksekusi buatGrafik(dataPenduduk, dataDoktor")
+            //console.log(dataPenduduk);
+            //console.log(dataDokter);
+
+            var elemenCanvas = document.getElementById("canvas-untuk-menggambar-grafik");
+            var penggambarCanvas = elemenCanvas.getContext("2d");
+
+            var judulGrafik = "Grafik Rasio Jumlah Penduduk per 1 Dokter";
+            var dataUntukGrafik = buatDataUntukGrafik(dataPenduduk, dataDokter);
+
+            var konfigurasiChartJs = {
+                type: 'bar',
+                data: dataUntukGrafik,
+                options: {
+                    responsive: true,
+                    title: {
+                        display: true,
+                        text: judulGrafik
+                    },
+                    scales:  {
+                        yAxes: [{
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                            ticks: {
+                                min: 0,
+                            },
+                            id: 'sumbu-y-kiri'
+                        }, { 
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            ticks: {
+                                min: 0,
+                            },
+                            id: 'sumbu-y-kanan' 
+                        }]
+                    }
+                }
+            };
+
+            var grafik = new Chart(penggambarCanvas, konfigurasiChartJs);
+
+        }
+
+        window.onload = function () {
+            // Data untuk Grafik
+            var urlDataPenduduk =
+                "https://mechaid.github.io/course-materials/praktikum-web/2020-2021/contoh/json-api-ke-chart/penduduk-jawa-barat-2019.json";
+            var urlDataDokter =
+                "https://mechaid.github.io/course-materials/praktikum-web/2020-2021/contoh/json-api-ke-chart/dokter-jawa-barat-2019.json";
+
+            var dataPenduduk, dataDokter;
+
+            // XMLHttpRequest
+
+            // Request Data Peenduduk
+            var requestDataPenduduk = new XMLHttpRequest();
+            requestDataPenduduk.open("GET", urlDataPenduduk, true);
+            requestDataPenduduk.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    dataPenduduk = JSON.parse(this.responseText);
+
+                    if (dataDokter !== undefined) {
+                        buatGrafik(dataPenduduk, dataDokter);
+                    }
+                }
+            };
+            requestDataPenduduk.send('');  
+
+            // Request Data Dokter
+            var requestDataDokter = new XMLHttpRequest();
+            requestDataDokter.open("GET", urlDataDokter, true);
+            requestDataDokter.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    dataDokter = JSON.parse(this.responseText);
+
+                    if (dataPenduduk !== undefined) {
+                        buatGrafik(dataPenduduk, dataDokter);
+                    }
+                }
+            };
+            requestDataDokter.send('');
+
+        };
+    </script>
+    <div class="card text-black bg-primary mb-3" style="width: 50rem;">
+        <div class="card">
+            <img class="img-responsive" src="https://assets.pikiran-rakyat.com/crop/0x0:0x0/x/photo/2021/02/02/1961783179.jpg" class="rounded" width="300px" alt="">
+          <h5 class="card-title">Pikiran-Rakyat.com dari Worldometer, total kasus Covid-19 di dunia per Selasa 2 Februari 2021 pukul 09.45 WIB mencapai 103.921.813 jiwa.</h5>
+          <p class="card-text">
+            Angka ini didapatkan setelah mengalami penambahan pasien baru sebanyak 392.565 orang dalam 24 jam terakhir.
+
+Untuk kasus kematian, bertambah sebanyak 9.210 kasus sehingga akumulasi pasien meninggal dunia akibat Covid-19 mencapai 2.247.018 orang.</p>
+          <p class="card-text"><small class="text-muted">Last updated 10 hours ago</small></p>
+          <a href="https://www.pikiran-rakyat.com/internasional/pr-011366491/update-virus-corona-di-dunia-2-februari-2021-terendah-sejak-oktober-2020-tapi-indonesia-malah-masuk-10-besar" class="btn btn-primary">Cek</a>
+        </div>
+      </div>
+</body>
+</html>  
